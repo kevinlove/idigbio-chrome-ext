@@ -1,0 +1,14 @@
+{
+  "name": "iDigBio Search",
+  "description": "This extension shows an iDigBio beta-search for selected text in the fields common name, scientific name,collector, and locality",
+  "version": "1.0",
+  "permissions": ["contextMenus"],
+  "background": {
+    "persistent": false,
+    "scripts": ["idigbio-search.js"]
+  },
+  "manifest_version": 2,
+  "icons": {
+          "16": "iDigBio_Favicon-19.png"
+  }
+}
