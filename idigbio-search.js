@@ -1,17 +1,19 @@
 // The onClicked callback function.
 function onClickHandler(info) {
     if (info.menuItemId == "commonname") {
-    var searchPageUrl ='https://beta-portal.idigbio.org/portal/search?commonname='+ info.selectionText;
+    var searchPageUrl ='https://www.idigbio.org/portal/search?rq={%22commonname%22:%22'+ info.selectionText+'%22}';
   } else if (info.menuItemId == "scientificname") {
-    var searchPageUrl ='https://beta-portal.idigbio.org/portal/search?scientificname='+ info.selectionText;
+    var searchPageUrl ='https://www.idigbio.org/portal/search?rq={%22scientificname%22:%22'+ info.selectionText +'%22}';
   } else if (info.menuItemId == "collector") {
-    var searchPageUrl ='https://beta-portal.idigbio.org/portal/search?collector='+ info.selectionText;
+    var searchPageUrl ='https://www.idigbio.org/portal/search?rq={%22collector%22:%22'+ info.selectionText+'%22}';
   } else if (info.menuItemId == "locality") {
-    var searchPageUrl ='https://beta-portal.idigbio.org/portal/search?locality='+ info.selectionText;
+    var searchPageUrl ='https://www.idigbio.org/portal/search?rq={%22locality%22:%22'+ info.selectionText+'%22}';
+  } else if (info.menuItemId == "alltext") {
+    var searchPageUrl ='https://www.idigbio.org/portal/search?rq={%22data%22:{%22type%22:%22fulltext%22,%22value%22:%22'+ info.selectionText+'%22}}';
   }
 else {
     //Get Search page
-    var searchPageUrl = 'https://beta-portal.idigbio.org/portal/search?scientificname='+ info.selectionText;
+    var searchPageUrl = 'https://www.idigbio.org/portal/search?rq={%22scientificname%22:%22'+ info.selectionText + '%22}';
     };
     chrome.tabs.create({ url: searchPageUrl });
 };
@@ -34,6 +36,8 @@ chrome.contextMenus.onClicked.addListener(onClickHandler);
       {"title": "'%s' in Collector", "parentId": "fulltext", "id": "collector","contexts":[context]});
   chrome.contextMenus.create(
       {"title": "'%s' in Locality", "parentId": "fulltext", "id": "locality","contexts":[context]});
+  chrome.contextMenus.create(
+      {"title": "'%s' in any field", "parentId": "fulltext", "id": "alltext","contexts":[context]});
   }
 });
 
