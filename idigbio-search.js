@@ -30,7 +30,7 @@ chrome.contextMenus.onClicked.addListener(onClickHandler);
     var context = contexts[i];
   // Create menus
   chrome.contextMenus.create({"title": "Search iDigBio for '%s'", "id": "fulltext", "contexts":[context]});
-    chrome.contextMenus.create({"title": "in occurence name fields:", "parentId": "fulltext", "id": "names","contexts":[context]});
+    chrome.contextMenus.create({"title": "in occurrence name fields:", "parentId": "fulltext", "id": "names","contexts":[context]});
       chrome.contextMenus.create({"title": "Common Name", "parentId": "names", "id": "commonname","contexts":[context]});
       chrome.contextMenus.create({"title": "Scientific Name", "parentId": "names", "id": "scientificname","contexts":[context]});
       chrome.contextMenus.create({"title": "Genus", "parentId": "names", "id": "genus","contexts":[context]});
